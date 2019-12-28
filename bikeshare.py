@@ -12,8 +12,8 @@ def get_filters():
 
     Returns:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - name of the month to filter by, or "all" to apply n month filter
+        (str) day - name of the day of week to filter by, or "all" to apply n day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
@@ -31,7 +31,7 @@ def get_filters():
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
         try:
-            month = input('Please enter name of the month to filter by, or "all" to apply no month filter: ').lower()
+            month = input('Please enter name of the month to filter by, or "all" to apply n month filter: ').lower()
             if month not in ('all', 'january', 'february', 'march', 'april', 'may', 'june'):
                 print('Please choose a valid month')
             else:
@@ -43,7 +43,7 @@ def get_filters():
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         try:
-            day = input('Please enter name of the day of week to filter by, or "all" to apply no day filter: ').lower()
+            day = input('Please enter name of the day of week to filter by, or "all" to apply n day filter: ').lower()
             if day not in ('all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'):
                 print('Please choose a valid weekday name')
             else:
@@ -62,8 +62,8 @@ def load_data(city, month, day):
 
     Args:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - name of the month to filter by, or "all" to apply n month filter
+        (str) day - name of the day of week to filter by, or "all" to apply n day filter
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
@@ -88,16 +88,16 @@ def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
     while True:
         try:
-            stats = input('\nWould you like to view statistics on the most frequent times of travel?\nEnter yes or no.\n').lower()
-            if stats not in ('yes', 'no'):
-                print('Please Enter yes or no')
+            stats = input('\nWould you like to view statistics on the most frequent times of travel?\nEnter y or n.\n').lower()
+            if stats not in ('y', 'n'):
+                print('Please Enter y or n')
             else:
                 break
         except:
-            print('Please Enter yes or no')
+            print('Please Enter y or n')
             continue
         
-    if stats == 'yes':
+    if stats == 'y':
         print('\nCalculating The Most Frequent Times of Travel...\n')
         start_time = time.time()
 
@@ -125,15 +125,15 @@ def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
     while True:
         try:
-            stats = input('\nWould you like to view statistics on the most popular stations and trip?\nEnter yes or no.\n').lower()
-            if stats not in ('yes', 'no'):
-                print('Please Enter yes or no')
+            stats = input('\nWould you like to view statistics on the most popular stations and trip?\nEnter y or n.\n').lower()
+            if stats not in ('y', 'n'):
+                print('Please Enter y or n')
             else:
                 break
         except:
-            print('Please Enter yes or no')
+            print('Please Enter y or n')
             continue
-    if stats == 'yes':
+    if stats == 'y':
         print('\nCalculating The Most Popular Stations and Trip...\n')
         start_time = time.time()
 
@@ -162,15 +162,15 @@ def trip_duration_stats(df):
     while True:
         try:
             
-            stats = input('\nWould you like to view statistics on the total and average trip duration?\nEnter yes or no.\n').lower()
-            if stats not in ('yes', 'no'):
-                print('Please Enter yes or no')
+            stats = input('\nWould you like to view statistics on the total and average trip duration?\nEnter y or n.\n').lower()
+            if stats not in ('y', 'n'):
+                print('Please Enter y or n')
             else:
                 break
         except:
-                print('Please Enter yes or no')
+                print('Please Enter y or n')
                 continue
-    if stats == 'yes':
+    if stats == 'y':
 
         print('\nCalculating Trip Duration...\n')
         start_time = time.time()
@@ -193,15 +193,15 @@ def user_stats(df):
     """Displays statistics on bikeshare users."""
     while True:
         try:
-            stats = input('\nWould you like to view statistics on bikeshare users?\nEnter yes or no.\n').lower()
-            if stats not in ('yes', 'no'):
-                print('Please Enter yes or no')
+            stats = input('\nWould you like to view statistics on bikeshare users?\nEnter y or n.\n').lower()
+            if stats not in ('y', 'n'):
+                print('Please Enter y or n')
             else:
                 break
         except:
-            print('Please Enter yes or no')
+            print('Please Enter y or n')
             continue
-    if stats == 'yes':
+    if stats == 'y':
         print('\nCalculating User Stats...\n')
         start_time = time.time()
 
@@ -258,33 +258,33 @@ def main():
         
         while True:
             try:
-                view_rd = input('\nWould you like to view first five raw data?\nEnter yes or no.\n').lower()
-                if view_rd not in ('yes', 'no'):
-                    print('Please Enter yes or no')
+                view_rd = input('\nWould you like to view first five raw data?\nEnter y or n.\n').lower()
+                if view_rd not in ('y', 'n'):
+                    print('Please Enter y or n')
                 else:
                     break
             except:
-                print('Please Enter yes or no')
+                print('Please Enter y or n')
                 continue
         x = 0
-        while view_rd == 'yes':
+        while view_rd == 'y':
             
             vrd = df[x:x+5]
             print(vrd)
             x += 5
             while True:
                 try:
-                    view_rd = input('\nWould you like to view next five raw data?\nEnter yes or no.\n').lower()
-                    if view_rd not in ('yes', 'no'):
-                        print('Please Enter yes or no')
+                    view_rd = input('\nWould you like to view next five raw data?\nEnter y or n.\n').lower()
+                    if view_rd not in ('y', 'n'):
+                        print('Please Enter y or n')
                     else:
                         break
                 except:
-                    print('Please Enter yes or no')
+                    print('Please Enter y or n')
                     continue
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
+        restart = input('\nWould you like to restart? Enter y or n.\n')
+        if restart.lower() != 'y':
             break
 
 

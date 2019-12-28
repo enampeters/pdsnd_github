@@ -159,20 +159,34 @@ def station_stats(df):
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
+    while True:
+        try:
+            
+            stats = input('\nWould you like to view statistics on the total and average trip duration?\nEnter yes or no.\n').lower()
+            if stats not in ('yes', 'no'):
+                print('Please Enter yes or no')
+            else:
+                break
+        except:
+                print('Please Enter yes or no')
+                continue
+    if stats == 'yes':
 
-    print('\nCalculating Trip Duration...\n')
-    start_time = time.time()
+        print('\nCalculating Trip Duration...\n')
+        start_time = time.time()
 
-    # TO DO: display total travel time
-    ttt = sum(df['Trip Duration'])
-    print('Total travel time is ', ttt/86400, " d")
+        # TO DO: display total travel time
+        ttt = sum(df['Trip Duration'])
+        print('Total travel time is ', ttt/86400, " d")
 
-    # TO DO: display mean travel time
-    mtt = df['Trip Duration'].mean()
-    print('Mean travel time is ', mtt/60, " m")
+        # TO DO: display mean travel time
+        mtt = df['Trip Duration'].mean()
+        print('Mean travel time is ', mtt/60, " m")
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+        print("\nThis took %s seconds." % (time.time() - start_time))
+        print('-'*40)
+    else:
+        print('Skipping statistics on the total and average trip duration.')
 
 
 def user_stats(df):

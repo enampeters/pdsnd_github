@@ -123,26 +123,38 @@ def time_stats(df):
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
+    while True:
+        try:
+            stats = input('\nWould you like to view statistics on the most popular stations and trip?\nEnter yes or no.\n').lower()
+            if stats not in ('yes', 'no'):
+                print('Please Enter yes or no')
+            else:
+                break
+        except:
+            print('Please Enter yes or no')
+            continue
+    if stats == 'yes':
+        print('\nCalculating The Most Popular Stations and Trip...\n')
+        start_time = time.time()
 
-    print('\nCalculating The Most Popular Stations and Trip...\n')
-    start_time = time.time()
-
-    # TO DO: display most commonly used start station
-    mcss = df['Start Station'].value_counts().idxmax()
-    print('Most commonly used start station is ', mcss)
+        # TO DO: display most commonly used start station
+        mcss = df['Start Station'].value_counts().idxmax()
+        print('Most commonly used start station is ', mcss)
 
 
-    # TO DO: display most commonly used end station
-    mces = df['End Station'].value_counts().idxmax()
-    print('Most commonly used end station is', mces)
+        # TO DO: display most commonly used end station
+        mces = df['End Station'].value_counts().idxmax()
+        print('Most commonly used end station is', mces)
 
-    # TO DO: display most frequent combination of start station and end station trip
-    combo_station = df.groupby(['Start Station', 'End Station']).count()
-    print('The most frequent combination of start station and end station trip ', mcss, ' & ', mces, ' => ', combo_station)
+        # TO DO: display most frequent combination of start station and end station trip
+        combo_station = df.groupby(['Start Station', 'End Station']).count()
+        print('The most frequent combination of start station and end station trip ', mcss, ' & ', mces, ' => ', combo_station)
 
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+        print("\nThis took %s seconds." % (time.time() - start_time))
+        print('-'*40)
+    else:
+        print('Skipping statistics on the most popular stations and trip.')
 
 
 def trip_duration_stats(df):

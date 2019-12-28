@@ -268,8 +268,8 @@ def main():
                 continue
         x = 0
         while view_rd == 'yes':
-            y = x + 5
-            vrd = df[x:y]
+            
+            vrd = df[x:x+5]
             print(vrd)
             x += 5
             while True:

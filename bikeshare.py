@@ -86,28 +86,40 @@ def load_data(city, month, day):
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
+    while True:
+        try:
+            stats = input('\nWould you like to view statistics on the most frequent times of travel?\nEnter yes or no.\n').lower()
+            if stats not in ('yes', 'no'):
+                print('Please Enter yes or no')
+            else:
+                break
+        except:
+            print('Please Enter yes or no')
+            continue
+        
+    if stats == 'yes':
+        print('\nCalculating The Most Frequent Times of Travel...\n')
+        start_time = time.time()
 
-    print('\nCalculating The Most Frequent Times of Travel...\n')
-    start_time = time.time()
+        # TO DO: display the most common month
+        mcm = df['month'].mode()[0]
+        print('Most common month is ', mcm)
 
-    # TO DO: display the most common month
-    mcm = df['month'].mode()[0]
-    print('Most common month is ', mcm)
+        # TO DO: display the most common day of week
 
-    # TO DO: display the most common day of week
+        mcd = df['day_of_week'].mode()[0]
+        print('Most common day is ', mcd)
 
-    mcd = df['day_of_week'].mode()[0]
-    print('Most common day is ', mcd)
-
-    # TO DO: display the most common start hour
-    df['hour'] = df['Start Time'].dt.hour
-    mch = df['hour'].mode()[0]
-    print('Most common start hour is ', mch)
+        # TO DO: display the most common start hour
+        df['hour'] = df['Start Time'].dt.hour
+        mch = df['hour'].mode()[0]
+        print('Most common start hour is ', mch)
 
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
-
+        print("\nThis took %s seconds." % (time.time() - start_time))
+        print('-'*40)
+    else:
+        print('Skipping statistics on the most frequent times of travel.')
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""

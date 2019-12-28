@@ -191,47 +191,59 @@ def trip_duration_stats(df):
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
+    while True:
+        try:
+            stats = input('\nWould you like to view statistics on bikeshare users?\nEnter yes or no.\n').lower()
+            if stats not in ('yes', 'no'):
+                print('Please Enter yes or no')
+            else:
+                break
+        except:
+            print('Please Enter yes or no')
+            continue
+    if stats == 'yes':
+        print('\nCalculating User Stats...\n')
+        start_time = time.time()
 
-    print('\nCalculating User Stats...\n')
-    start_time = time.time()
-
-    # TO DO: Display counts of user types
-    user_types = df['User Type'].value_counts()
-    print('Count of user types\n', user_types)
+        # TO DO: Display counts of user types
+        user_types = df['User Type'].value_counts()
+        print('Count of user types\n', user_types)
 
 
-    # TO DO: Display counts of gender
-    try:
-        gt = df['Gender'].value_counts()
-        print('Gender count\n ', gt)
+        # TO DO: Display counts of gender
+        try:
+            gt = df['Gender'].value_counts()
+            print('Gender count\n ', gt)
 
-    except KeyError:
-        print('Gender count Could not find data')
+        except KeyError:
+            print('Gender count Could not find data')
 
-    # TO DO: Display earliest, most recent, and most common year of birth
-    try:
-      ey = df['Birth Year'].min()
-      print('Earliest year of birth is ', ey)
+        # TO DO: Display earliest, most recent, and most common year of birth
+        try:
+          ey = df['Birth Year'].min()
+          print('Earliest year of birth is ', ey)
 
-    except KeyError:
-      print("Could not find data")
+        except KeyError:
+          print("Could not find data")
 
-    try:
-      mry = df['Birth Year'].max()
-      print('Most recent year of birth is ', mry)
+        try:
+          mry = df['Birth Year'].max()
+          print('Most recent year of birth is ', mry)
 
-    except KeyError:
-      print('Could not find data')
+        except KeyError:
+          print('Could not find data')
 
-    try:
-      mcy = df['Birth Year'].value_counts().idxmax()
-      print('Most common year of birth is  ', mcy)
+        try:
+          mcy = df['Birth Year'].value_counts().idxmax()
+          print('Most common year of birth is  ', mcy)
 
-    except KeyError:
-      print('Could not find data')
+        except KeyError:
+          print('Could not find data')
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+        print("\nThis took %s seconds." % (time.time() - start_time))
+        print('-'*40)
+    else:
+        print('Skipping statistics on bikeshare users.')
 
 
 def main():
